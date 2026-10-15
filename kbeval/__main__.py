@@ -23,7 +23,7 @@ def main(argv: list[str] | None = None):
     p.add_argument("--out", type=Path, default=ROOT / "results", help="output directory")
     p.add_argument("--letters-only", action="store_true",
                    help="fold accents and drop non-letters, as in the original v1 optimisation")
-    p.add_argument("--focus", default="v1", help="layout id detailed in the report")
+    p.add_argument("--focus", default="v2", help="layout id detailed in the report")
     p.add_argument("--samples", type=int, default=2000, help="weight sensitivity samples")
     p.add_argument("--spread", type=float, default=0.5, help="weight sensitivity: max relative change")
     p.add_argument("--seed", type=int, default=1, help="random seed for the sensitivity analysis")

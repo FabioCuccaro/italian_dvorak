@@ -97,7 +97,7 @@ sensibilità mostra che la testa della classifica è stabile con ogni peso varia
 
 ## H. Prossimo passo
 
-Generare un nuovo layout con il verso dei roll corretto, valutato su entrambi i corpus (passo 3 del piano).
+Generare un nuovo layout con il verso dei roll corretto, valutato su entrambi i corpus (passo 3 del piano). Fatto: vedi [v2](v2-candidate.it.md).
 
 ## Secondo corpus: Wikipedia in italiano
 

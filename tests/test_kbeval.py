@@ -107,5 +107,30 @@ class WikipediaCorpus(unittest.TestCase):
         self.assertEqual(summarize(analyze(load_layout(V1), corpus))["unmapped_characters"], 0)
 
 
+class Optimizer(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from kbeval.optimize import CorpusCounts, Objective
+        from kbeval.score import load_weights
+        cls.weights = load_weights(ROOT / "config" / "weights.json")
+        cls.corpora = [load_corpus(ROOT / "data" / "it_top5000.csv"),
+                       load_corpus(ROOT / "data" / "it_wikipedia_top20000.csv")]
+        cls.objective = Objective([CorpusCounts(c) for c in cls.corpora], cls.weights)
+
+    def test_matches_pipeline_score(self):
+        from kbeval.optimize import placement
+        from kbeval.score import score
+        for name in ("10-v1.json", "20-v2.json"):
+            layout = load_layout(ROOT / "layouts" / name)
+            full = sum(score(summarize(analyze(layout, c)), self.weights) for c in self.corpora) / 2
+            self.assertAlmostEqual(self.objective(placement(layout)), full, places=9, msg=name)
+
+    def test_vowels_left_constraint(self):
+        from kbeval.optimize import SLOTS, SYMBOLS, anneal
+        _, place = anneal(self.objective, seed=1, steps=2000, vowels_left=True)
+        for v in "aeiou":
+            self.assertEqual(SLOTS[place[SYMBOLS.index(v)]].hand, "L", v)
+
+
 if __name__ == "__main__":
     unittest.main()

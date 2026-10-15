@@ -5,27 +5,28 @@
 Un layout di tastiera in stile Dvorak pensato per l'italiano, e un metodo aperto e riproducibile per
 progettarlo e valutarlo.
 
-> **Stato: prototipo.** L'attuale candidato (v1) non è definitivo. Vedi la
-> [valutazione di v1](docs/v1-evaluation.it.md) per cosa funziona e cosa no.
+> **Stato: candidato.** L'attuale candidato (v2) non è definitivo: accenti e punteggiatura sono
+> ancora aperti e non è stato provato da chi digita davvero. Vedi [v2](docs/v2-candidate.it.md) e la
+> [valutazione della precedente v1](docs/v1-evaluation.it.md).
 
-## Il layout (candidato v1)
+## Il layout (candidato v2)
 
 ```
-G W Q Z Y   M L C H B
-U A O E I   S N T R D
-' . X K J   F P V , -
+K F ' Q X   B D S M J
+U E I A O   C T L N R   ◌
+W Z Y . ,   P G V H -
 ```
 
 Le vocali stanno sulla home row sinistra, le consonanti frequenti a destra. Le vocali accentate
-(à è é ì ò ù) si digitano con un tasto morto sul tasto a destra della home row: tasto morto e poi vocale
-per l'accento grave, Shift + tasto morto e poi vocale per l'accento acuto.
+(à è é ì ò ù) si digitano con un tasto morto (◌) sul tasto a destra della home row: tasto morto e poi
+vocale per l'accento grave, Shift + tasto morto e poi vocale per l'accento acuto.
 
-| | v1 | QWERTY italiana |
-|---|---|---|
-| Battute in home row | 75,2% | 29,8% |
-| Bigrammi stesso dito | 2,34% | 7,02% |
-| Alternanza delle mani | 75,0% | 49,5% |
-| Mano sinistra / destra | 50,5 / 49,5 | 54,2 / 45,8 |
+| | v2 | v1 | QWERTY italiana |
+|---|---|---|---|
+| Battute in home row | 75,9% | 75,2% | 29,8% |
+| Bigrammi stesso dito | 0,39% | 2,34% | 7,02% |
+| Alternanza delle mani | 74,7% | 75,0% | 49,5% |
+| Mano sinistra / destra | 50,2 / 49,8 | 50,5 / 49,5 | 54,2 / 45,8 |
 
 Misurato sulle 5.000 parole italiane più frequenti (corpus di sottotitoli). Confronto completo con gli
 altri layout: [results/layout_comparison_report.it.md](results/layout_comparison_report.it.md). La
@@ -36,8 +37,8 @@ stessa valutazione sull'italiano scritto (Wikipedia) è in
 ### Provarlo
 
 I file del layout per una copia self-hosted di [keybr](https://www.keybr.com) sono in
-[`keybr/`](keybr/README.md). Le versioni installabili per i sistemi operativi arriveranno quando il
-layout sarà definitivo.
+[`keybr/`](keybr/README.md). Contengono ancora v1. Le versioni installabili per i sistemi operativi
+arriveranno quando il layout sarà definitivo.
 
 ## Valutare un layout
 
@@ -58,7 +59,8 @@ python -m kbeval.compare subtitles=results wikipedia=results/wikipedia --out res
 ```
 
 Per valutare un tuo layout, aggiungi un file JSON in [`layouts/`](layouts/) (copia
-[`10-v1.json`](layouts/10-v1.json) e modifica le righe) e riesegui. Per usare un altro corpus, passa un
+[`20-v2.json`](layouts/20-v2.json) e modifica le righe) e riesegui. Per cercare un nuovo layout usa
+`python -m kbeval.optimize` (vedi [come è stata ottenuta v2](docs/v2-candidate.it.md#come-è-stato-ottenuto)). Per usare un altro corpus, passa un
 CSV con colonne `word,frequency` con `--corpus`. I pesi del punteggio sono in
 [`config/weights.json`](config/weights.json).
 
@@ -87,7 +89,7 @@ e i cambi di direzione, e le battute extra per le vocali accentate (tasto morto,
 
 | Percorso | Contenuto |
 |---|---|
-| `kbeval/` | pipeline di valutazione (Python, solo libreria standard) |
+| `kbeval/` | pipeline di valutazione e ottimizzatore (Python, solo libreria standard) |
 | `layouts/` | layout confrontati, un file JSON ciascuno |
 | `config/` | pesi del punteggio |
 | `data/` | corpus (sottotitoli, Wikipedia), con la loro [licenza](data/README.md) |
@@ -100,7 +102,7 @@ e i cambi di direzione, e le battute extra per le vocali accentate (tasto morto,
 
 1. Pipeline di valutazione riproducibile e valutazione di v1. Fatto.
 2. Secondo corpus di italiano scritto (Wikipedia), per verificare i risultati oltre i sottotitoli. Fatto.
-3. Nuovo layout ottimizzato con il modello corretto.
+3. Nuovo layout ottimizzato con il modello corretto: [candidato v2](docs/v2-candidate.it.md).
 4. Layout installabili (prima XKB per Linux) e integrazione con keybr.
 
 ## Licenza
