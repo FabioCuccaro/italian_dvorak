@@ -1,0 +1,15 @@
+{
+  "id": "v1-a",
+  "name": "v1 variant A (L on home row)",
+  "description": "v1 with L and D swapped, so L is on the home row.",
+  "source": "spec_valutazione_A-H.md, section 6",
+  "rows": {
+    "top": "gwqzymdchb",
+    "home": "uaoeisntrl",
+    "bottom": "'.xkjfpv,-"
+  },
+  "accents": {
+    "method": "deadkey",
+    "key": "home:10"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "qwerty-it",
+  "name": "QWERTY (Italian)",
+  "description": "Standard Italian keyboard. Accented vowels have their own keys; é is Shift + è.",
+  "source": "Italian national layout",
+  "rows": {
+    "top": "qwertyuiop",
+    "home": "asdfghjklò",
+    "bottom": "zxcvbnm,.-"
+  },
+  "extra": {
+    "è": "top:10",
+    "à": "home:10",
+    "ù": "home:11",
+    "'": "number:10",
+    "ì": "number:11"
+  },
+  "accents": {
+    "method": "direct"
+  }
+}

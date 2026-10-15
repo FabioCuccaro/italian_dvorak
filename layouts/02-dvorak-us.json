@@ -1,0 +1,15 @@
+{
+  "id": "dvorak-us",
+  "name": "Dvorak (US)",
+  "description": "Standard US Dvorak. It has no accented letters, so the same dead key as v1 (Quote key) is assumed.",
+  "source": "US Dvorak",
+  "rows": {
+    "top": "',.pyfgcrl",
+    "home": "aoeuidhtns",
+    "bottom": ";qjkxbmwvz"
+  },
+  "accents": {
+    "method": "deadkey",
+    "key": "home:10"
+  }
+}

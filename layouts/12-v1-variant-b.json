@@ -1,0 +1,15 @@
+{
+  "id": "v1-b",
+  "name": "v1 variant B (Q on the right)",
+  "description": "v1 with Q and B swapped, so QU alternates hands.",
+  "source": "spec section 6, proposed here",
+  "rows": {
+    "top": "gwbzymlchq",
+    "home": "uaoeisntrd",
+    "bottom": "'.xkjfpv,-"
+  },
+  "accents": {
+    "method": "deadkey",
+    "key": "home:10"
+  }
+}
