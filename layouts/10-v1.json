@@ -1,0 +1,15 @@
+{
+  "id": "v1",
+  "name": "Italian-Dvorak v1",
+  "description": "The current prototype, as in it_dvorak.json (dead key on the Quote key).",
+  "source": "it_dvorak.json",
+  "rows": {
+    "top": "gwqzymlchb",
+    "home": "uaoeisntrd",
+    "bottom": "'.xkjfpv,-"
+  },
+  "accents": {
+    "method": "deadkey",
+    "key": "home:10"
+  }
+}

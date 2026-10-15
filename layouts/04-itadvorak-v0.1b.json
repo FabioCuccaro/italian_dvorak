@@ -1,0 +1,15 @@
+{
+  "id": "itadvorak-v0.1b",
+  "name": "ItaDvorak v0.1b",
+  "description": "v0.1 with N and I swapped.",
+  "source": "spec_valutazione_A-H.md",
+  "rows": {
+    "top": "wfhkjcdpmg",
+    "home": "uoaenitrls",
+    "bottom": "xy,.'qvbz;"
+  },
+  "accents": {
+    "method": "deadkey",
+    "key": "home:10"
+  }
+}

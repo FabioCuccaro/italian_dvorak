@@ -1,0 +1,15 @@
+{
+  "id": "itadvorak-v0.1",
+  "name": "ItaDvorak v0.1",
+  "description": "Earlier candidate from the project spec.",
+  "source": "spec_valutazione_A-H.md",
+  "rows": {
+    "top": "wfhkjcdpmg",
+    "home": "uoaeintrls",
+    "bottom": "xy,.'qvbz;"
+  },
+  "accents": {
+    "method": "deadkey",
+    "key": "home:10"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "v1-c",
+  "name": "v1 variant C (C and H on different hands)",
+  "description": "v1 with H and Z swapped, so CH alternates hands.",
+  "source": "spec section 6, proposed here",
+  "rows": {
+    "top": "gwqhymlczb",
+    "home": "uaoeisntrd",
+    "bottom": "'.xkjfpv,-"
+  },
+  "accents": {
+    "method": "deadkey",
+    "key": "home:10"
+  }
+}

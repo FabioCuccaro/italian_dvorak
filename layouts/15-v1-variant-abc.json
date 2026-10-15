@@ -1,0 +1,15 @@
+{
+  "id": "v1-abc",
+  "name": "v1 variants A+B+C combined",
+  "description": "v1 with L on the home row, Q on the right and H on the left.",
+  "source": "proposed here",
+  "rows": {
+    "top": "gwbhymdczq",
+    "home": "uaoeisntrl",
+    "bottom": "'.xkjfpv,-"
+  },
+  "accents": {
+    "method": "deadkey",
+    "key": "home:10"
+  }
+}

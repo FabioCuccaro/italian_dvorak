@@ -1,0 +1,13 @@
+{
+  "mean_distance": 1.0,
+  "same_finger_bigrams": 2.5,
+  "pinky_load": 1.5,
+  "hand_imbalance": 1.0,
+  "bottom_row": 0.75,
+  "top_row": 0.5,
+  "number_row": 1.0,
+  "accent_extra_keystrokes": 0.5,
+  "word_end_space_hand": 0.75,
+  "hand_alternation": -0.75,
+  "roll_inward": -0.5
+}

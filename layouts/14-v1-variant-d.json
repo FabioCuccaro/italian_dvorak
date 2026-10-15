@@ -1,0 +1,14 @@
+{
+  "id": "v1-d",
+  "name": "v1 variant D (AltGr accents)",
+  "description": "v1 letters, accents typed as AltGr + vowel instead of a dead key.",
+  "source": "spec section 6",
+  "rows": {
+    "top": "gwqzymlchb",
+    "home": "uaoeisntrd",
+    "bottom": "'.xkjfpv,-"
+  },
+  "accents": {
+    "method": "altgr"
+  }
+}
