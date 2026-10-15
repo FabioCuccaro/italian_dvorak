@@ -1,0 +1,202 @@
+# Report di confronto dei layout
+
+[English](layout_comparison_report.md)
+
+_Generato da `python -m kbeval`. Non modificarlo a mano: riesegui la pipeline._
+
+## Corpus
+
+`data/it_wikipedia_top20000.csv`: 20,000 parole, 462,647,492 occorrenze, 2,308,870,995 caratteri.
+
+## Pesi del punteggio
+
+Punteggio più basso = migliore. I pesi negativi sono premi. Vedi `config/weights.json`.
+
+| metric | weight |
+|---|---|
+| `mean_distance` | +1.00 |
+| `same_finger_bigrams` | +2.50 |
+| `pinky_load` | +1.50 |
+| `hand_imbalance` | +1.00 |
+| `bottom_row` | +0.75 |
+| `top_row` | +0.50 |
+| `number_row` | +1.00 |
+| `accent_extra_keystrokes` | +0.50 |
+| `word_end_space_hand` | +0.75 |
+| `hand_alternation` | -0.75 |
+| `roll_inward` | -0.50 |
+
+## Layout
+
+**QWERTY (Italian)** (`qwerty-it`): Standard Italian keyboard. Accented vowels have their own keys; é is Shift + è.
+
+```
+q w e r t   y u i o p
+a s d f g   h j k l ò
+z x c v b   n m , . -
+```
+
+**Dvorak (US)** (`dvorak-us`): Standard US Dvorak. It has no accented letters, so the same dead key as v1 (Quote key) is assumed.
+
+```
+' , . p y   f g c r l
+a o e u i   d h t n s
+; q j k x   b m w v z
+```
+
+**ItaDvorak v0.1** (`itadvorak-v0.1`): Earlier candidate from the project spec.
+
+```
+w f h k j   c d p m g
+u o a e i   n t r l s
+x y , . '   q v b z ;
+```
+
+**ItaDvorak v0.1b** (`itadvorak-v0.1b`): v0.1 with N and I swapped.
+
+```
+w f h k j   c d p m g
+u o a e n   i t r l s
+x y , . '   q v b z ;
+```
+
+**ItaDvorak v0.2-seed** (`itadvorak-v0.2-seed`): Earlier candidate from the project spec.
+
+```
+w h z k j   c d r p f
+u i o e a   t l n s m
+x y , . '   v q b g ;
+```
+
+**Italian-Dvorak v1** (`v1`): The current prototype, as in it_dvorak.json (dead key on the Quote key).
+
+```
+g w q z y   m l c h b
+u a o e i   s n t r d
+' . x k j   f p v , -
+```
+
+**v1 variant A (L on home row)** (`v1-a`): v1 with L and D swapped, so L is on the home row.
+
+```
+g w q z y   m d c h b
+u a o e i   s n t r l
+' . x k j   f p v , -
+```
+
+**v1 variant B (Q on the right)** (`v1-b`): v1 with Q and B swapped, so QU alternates hands.
+
+```
+g w b z y   m l c h q
+u a o e i   s n t r d
+' . x k j   f p v , -
+```
+
+**v1 variant C (C and H on different hands)** (`v1-c`): v1 with H and Z swapped, so CH alternates hands.
+
+```
+g w q h y   m l c z b
+u a o e i   s n t r d
+' . x k j   f p v , -
+```
+
+**v1 variant D (AltGr accents)** (`v1-d`): v1 letters, accents typed as AltGr + vowel instead of a dead key.
+
+```
+g w q z y   m l c h b
+u a o e i   s n t r d
+' . x k j   f p v , -
+```
+
+**v1 variants A+B+C combined** (`v1-abc`): v1 with L on the home row, Q on the right and H on the left.
+
+```
+g w b h y   m d c z q
+u a o e i   s n t r l
+' . x k j   f p v , -
+```
+
+## Punteggi
+
+Valori in percentuale delle battute (righe, mani, mignoli) o dei bigrammi di tasti dentro le parole (SFB, alternanza, roll). La distanza è in larghezze di tasto per battuta. Il costo accenti è in battute extra ogni 100 caratteri.
+
+| Pos. | Layout | Punteggio | Home | Alta | Bassa | Distanza | SFB | Alternanza | Roll verso l'interno | Roll verso l'esterno | Mignoli | Mano sinistra | Costo accenti |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | itadvorak-v0.2-seed | 0.3070 | 74.7 | 20.3 | 4.9 | 0.475 | 1.97 | 76.6 | 12.2 | 4.7 | 7.5 | 48.3 | 0.77 |
+| 2 | v1-d | 0.3503 | 75.5 | 18.6 | 5.9 | 0.433 | 3.08 | 75.0 | 5.2 | 12.2 | 10.4 | 49.9 | 0.77 |
+| 3 | v1-abc | 0.3534 | 78.5 | 15.7 | 5.9 | 0.409 | 3.42 | 75.9 | 5.5 | 10.7 | 13.3 | 50.1 | 0.77 |
+| 4 | v1-b | 0.3588 | 75.7 | 18.5 | 5.9 | 0.437 | 3.19 | 74.7 | 5.4 | 12.2 | 10.5 | 50.1 | 0.77 |
+| 5 | v1-c | 0.3605 | 75.7 | 18.5 | 5.9 | 0.437 | 2.96 | 76.1 | 4.8 | 11.6 | 11.0 | 49.6 | 0.77 |
+| 6 | v1 | 0.3706 | 75.7 | 18.5 | 5.9 | 0.437 | 3.06 | 74.9 | 5.1 | 12.4 | 11.0 | 49.6 | 0.77 |
+| 7 | v1-a | 0.3788 | 78.5 | 15.7 | 5.9 | 0.409 | 3.50 | 74.9 | 5.5 | 11.6 | 13.8 | 49.6 | 0.77 |
+| 8 | itadvorak-v0.1 | 0.3853 | 78.5 | 17.5 | 4.0 | 0.443 | 4.76 | 76.8 | 7.5 | 6.4 | 10.5 | 48.6 | 0.77 |
+| 9 | dvorak-us | 0.5946 | 70.3 | 23.4 | 6.2 | 0.479 | 1.91 | 75.9 | 8.5 | 9.2 | 24.9 | 49.6 | 0.77 |
+| 10 | itadvorak-v0.1b | 0.7907 | 78.5 | 17.5 | 4.0 | 0.443 | 11.03 | 59.7 | 16.1 | 8.6 | 10.5 | 44.7 | 0.77 |
+| 11 | qwerty-it | 1.6240 | 31.4 | 50.9 | 17.2 | 0.777 | 7.79 | 50.7 | 17.6 | 19.4 | 16.1 | 55.2 | 0.04 |
+
+## Sensibilità ai pesi
+
+2,000 campioni, ogni peso moltiplicato per un fattore casuale tra 0.5x e 1.5x.
+
+| Layout | Posizione media | Primo posto | Intervallo posizioni |
+|---|---|---|---|
+| itadvorak-v0.2-seed | 1.21 | 88.9% | 1–8 |
+| v1-d | 2.46 | 0.1% | 1–5 |
+| v1-abc | 3.35 | 11.0% | 1–7 |
+| v1-b | 4.18 | 0.0% | 3–7 |
+| v1-c | 4.46 | 0.0% | 2–7 |
+| v1 | 6.37 | 0.0% | 5–8 |
+| v1-a | 6.74 | 0.0% | 2–8 |
+| itadvorak-v0.1 | 7.23 | 0.0% | 2–8 |
+| dvorak-us | 9.03 | 0.0% | 9–10 |
+| itadvorak-v0.1b | 9.97 | 0.0% | 9–10 |
+| qwerty-it | 11.00 | 0.0% | 11–11 |
+
+## Carico per dito (% delle battute)
+
+| Layout | LP | LR | LM | LI | RI | RM | RR | RP |
+|---|---|---|---|---|---|---|---|---|
+| qwerty-it | 12.2 | 5.0 | 20.0 | 18.0 | 13.8 | 11.3 | 15.8 | 3.9 |
+| dvorak-us | 11.5 | 9.1 | 11.8 | 17.2 | 11.3 | 10.8 | 14.9 | 13.4 |
+| itadvorak-v0.1 | 3.2 | 10.0 | 12.0 | 23.4 | 24.0 | 9.8 | 10.4 | 7.3 |
+| itadvorak-v0.1b | 3.2 | 10.0 | 12.0 | 19.5 | 27.9 | 9.8 | 10.4 | 7.3 |
+| itadvorak-v0.2-seed | 3.2 | 12.1 | 9.7 | 23.4 | 23.8 | 14.3 | 9.3 | 4.3 |
+| v1 | 5.2 | 11.2 | 9.2 | 24.0 | 25.4 | 12.2 | 7.0 | 5.8 |
+| v1-a | 5.2 | 11.2 | 9.2 | 24.0 | 22.6 | 12.2 | 7.0 | 8.6 |
+| v1-b | 5.2 | 11.2 | 9.7 | 24.0 | 25.4 | 12.2 | 7.0 | 5.3 |
+| v1-c | 5.2 | 11.2 | 9.2 | 24.0 | 25.4 | 12.2 | 7.1 | 5.8 |
+| v1-d | 5.3 | 11.3 | 9.2 | 24.2 | 25.6 | 12.2 | 7.1 | 5.1 |
+| v1-abc | 5.2 | 11.2 | 9.7 | 24.0 | 22.6 | 12.2 | 7.1 | 8.1 |
+
+## Peggiori bigrammi stesso dito di Italian-Dvorak v1
+
+Ordinati per quota x (1 + distanza tra i tasti). ◌ = tasto morto.
+
+| Bigramma | Dito | Quota | Distanza tasti |
+|---|---|---|---|
+| `zi` | LI | 0.59% | 1.60 |
+| `mp` | RI | 0.31% | 2.66 |
+| `ie` | LI | 0.47% | 1.00 |
+| `sp` | RI | 0.22% | 1.80 |
+| `iz` | LI | 0.22% | 1.60 |
+| `ei` | LI | 0.20% | 1.00 |
+| `ns` | RI | 0.17% | 1.00 |
+| `gu` | LP | 0.16% | 1.03 |
+| `pl` | RI | 0.06% | 2.14 |
+| `lm` | RI | 0.09% | 1.00 |
+
+## N-grammi più frequenti nel corpus
+
+**Caratteri:** `e` 11.56%, `i` 11.18%, `a` 11.01%, `o` 8.72%, `n` 7.30%, `l` 7.09%, `t` 6.59%, `r` 6.23%, `s` 4.84%, `d` 4.27%, `c` 4.18%, `u` 3.06%, `p` 2.77%, `m` 2.49%, `g` 1.75%, `v` 1.48%, `f` 1.11%, `z` 0.87%, `h` 0.86%, `b` 0.86%
+
+**Bigrammi:** `on` 2.08%, `di` 1.89%, `er` 1.84%, `el` 1.74%, `la` 1.72%, `co` 1.67%, `re` 1.64%, `to` 1.64%, `al` 1.63%, `de` 1.62%, `in` 1.58%, `ne` 1.57%, `ri` 1.50%, `ta` 1.50%, `en` 1.46%, `te` 1.45%, `an` 1.41%, `ra` 1.39%, `ll` 1.37%, `at` 1.35%
+
+**Trigrammi:** `del` 1.21%, `ell` 1.10%, `lla` 0.93%, `ent` 0.92%, `ion` 0.88%, `con` 0.84%, `per` 0.69%, `che` 0.67%, `nte` 0.66%, `one` 0.65%, `nel` 0.64%, `ato` 0.62%, `zio` 0.61%, `sta` 0.53%, `all` 0.51%, `men` 0.48%, `ale` 0.46%, `gli` 0.43%, `tra` 0.42%, `com` 0.41%
+
+## Limiti del modello
+
+- Il corpus è una lista di parole: i bigrammi non attraversano lo spazio e la punteggiatura è quasi assente.
+- La distanza è misurata dal tasto di riposo di ogni dito; lo spostamento tra tasti consecutivi non è modellato.
+- Shift e AltGr contano come battute extra ma non come pressioni delle dita.
+- Si assume che lo spazio dopo una parola sia premuto con il pollice destro (`word_end_space_hand`).
+- I layout senza accenti nativi usano un tasto morto sul tasto Quote, come v1.

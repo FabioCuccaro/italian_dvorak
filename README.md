@@ -28,7 +28,9 @@ Shift + dead key then vowel for the acute accent.
 | Left / right hand | 50.5 / 49.5 | 54.2 / 45.8 |
 
 Measured on the 5,000 most frequent Italian words (subtitles corpus). Full comparison with other
-layouts: [results/layout_comparison_report.md](results/layout_comparison_report.md).
+layouts: [results/layout_comparison_report.md](results/layout_comparison_report.md). The same
+evaluation on written Italian (Wikipedia) is in [results/wikipedia/](results/wikipedia/layout_comparison_report.md),
+and [results/corpus_comparison.md](results/corpus_comparison.md) puts the two side by side.
 
 ### Try it
 
@@ -40,9 +42,17 @@ Installable versions for operating systems will come once the layout is final.
 The evaluation pipeline needs only Python 3.10+ and no extra packages.
 
 ```sh
-python -m kbeval                  # score every layout in layouts/, write results/
+python -m kbeval                  # score every layout in layouts/ on the subtitles corpus, write results/
 python -m unittest discover tests # run the tests
 python -m kbeval --help           # all options
+```
+
+To regenerate everything in `results/`, including the Wikipedia run and the comparison:
+
+```sh
+python -m kbeval
+python -m kbeval --corpus data/it_wikipedia_top20000.csv --out results/wikipedia
+python -m kbeval.compare subtitles=results wikipedia=results/wikipedia --out results
 ```
 
 To evaluate your own layout, add a JSON file to [`layouts/`](layouts/) (copy
@@ -60,6 +70,8 @@ Outputs in `results/`:
 | `worst_same_finger_bigrams.csv` | the most uncomfortable same-finger bigrams per layout |
 | `top_ngrams.csv` | most frequent characters, bigrams and trigrams in the corpus |
 | `sensitivity.csv` | how stable the ranking is when the weights change |
+| `wikipedia/` | the same files for the Wikipedia corpus |
+| `corpus_comparison.md` (and `.it.md`) | rankings and key metrics on both corpora side by side |
 
 ### What is measured
 
@@ -76,7 +88,7 @@ lists the limits of the model.
 | `kbeval/` | evaluation pipeline (Python, standard library only) |
 | `layouts/` | layouts being compared, one JSON file each |
 | `config/` | score weights |
-| `data/` | corpus, with its own [license](data/README.md) |
+| `data/` | corpora (subtitles, Wikipedia), with their own [license](data/README.md) |
 | `docs/` | analysis and design notes |
 | `results/` | generated outputs |
 | `keybr/` | layout files for keybr |
@@ -84,12 +96,12 @@ lists the limits of the model.
 
 ## Roadmap
 
-1. Reproducible evaluation pipeline and v1 assessment (this version).
-2. Second corpus of written Italian, to check the results beyond subtitles.
+1. Reproducible evaluation pipeline and v1 assessment. Done.
+2. Second corpus of written Italian (Wikipedia), to check the results beyond subtitles. Done.
 3. New optimised layout with the corrected model.
 4. Installable layouts (Linux XKB first) and keybr integration.
 
 ## License
 
-Code and documentation: [MIT](LICENSE). The corpus in `data/` is CC BY-SA 4.0, see
+Code and documentation: [MIT](LICENSE). The corpora in `data/` are CC BY-SA 4.0, see
 [data/README.md](data/README.md).

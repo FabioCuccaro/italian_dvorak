@@ -61,8 +61,8 @@ rapporto dipende dai pesi e non va citato come riduzione dello sforzo.
 
 ## E. Piano di validazione
 
-1. Rieseguire questa pipeline su un secondo corpus di italiano scritto (prossimo passo del piano) e
-   verificare se la classifica regge.
+1. Rieseguire questa pipeline su un secondo corpus di italiano scritto e verificare se la classifica
+   regge. Fatto: vedi [Secondo corpus](#secondo-corpus-wikipedia-in-italiano) più sotto.
 2. Confrontare con un analyzer esistente (per esempio Oxeylyzer o genkey) sullo stesso corpus.
 3. Aggiungere testo con spazi e punteggiatura, così da modellare i bigrammi tra parole e l'apostrofo.
 
@@ -97,4 +97,24 @@ sensibilità mostra che la testa della classifica è stabile con ogni peso varia
 
 ## H. Prossimo passo
 
-Eseguire la stessa valutazione su un secondo corpus di italiano scritto (passo 2 del piano).
+Generare un nuovo layout con il verso dei roll corretto, valutato su entrambi i corpus (passo 3 del piano).
+
+## Secondo corpus: Wikipedia in italiano
+
+La stessa valutazione sulle 20.000 parole più frequenti di Wikipedia in italiano
+([risultati](../results/wikipedia/layout_comparison_report.it.md),
+[confronto affiancato](../results/corpus_comparison.it.md)).
+
+- **v0.2-seed resta prima** (prima nell'88,9% dei campioni di pesi, contro il 99,7% sui sottotitoli). Il
+  suo vantaggio non dipende dal corpus.
+- **v1 scende dal 3° al 6° posto.** L'italiano scritto ha più L (7,09% contro 5,14%), I e D, e molte meno
+  O e H. I suoi bigrammi stesso dito salgono dal 2,3% al 3,1%, soprattutto `zi` (0,59%, da *-zione*)
+  sull'indice sinistro, che porta anche E e I.
+- **Le varianti si scambiano di posto.** Su Wikipedia separare C e H (variante C) e la combinazione
+  A+B+C battono v1, mentre sui sottotitoli erano peggiori. Gli scambi di singole lettere stanno dentro
+  la variabilità dovuta alla scelta del corpus: non bastano per scegliere una variante.
+- **Robustezza:** la classifica è la stessa con le prime 5.000 o le prime 20.000 parole di Wikipedia,
+  quindi la differenza viene dal tipo di testo, non dalla lunghezza della lista.
+
+Conclusione per il passo 3: ottimizzare su entrambi i corpus insieme e considerare v0.2-seed il
+riferimento da battere.

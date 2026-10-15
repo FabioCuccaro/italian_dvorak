@@ -58,8 +58,8 @@ the weights and should not be quoted as an effort reduction either.
 
 ## E. Validation plan
 
-1. Rerun this pipeline on a second, written Italian corpus (next step of the project plan) and check
-   whether the ranking holds.
+1. Rerun this pipeline on a second, written Italian corpus and check whether the ranking holds.
+   Done: see [Second corpus](#second-corpus-italian-wikipedia) below.
 2. Compare with an established analyzer (e.g. Oxeylyzer, genkey) on the same corpus.
 3. Add text with spaces and punctuation, so bigrams across words and the apostrophe are modelled.
 
@@ -93,4 +93,23 @@ moves by ±50%.
 
 ## H. Next step
 
-Run the same evaluation on a second, written corpus (step 2 of the plan).
+Generate a new layout with the corrected roll direction, scored on both corpora (step 3 of the plan).
+
+## Second corpus: Italian Wikipedia
+
+The same evaluation on the 20,000 most frequent words of Italian Wikipedia
+([results](../results/wikipedia/layout_comparison_report.md),
+[side-by-side comparison](../results/corpus_comparison.md)).
+
+- **v0.2-seed is still first** (first in 88.9% of weight samples, against 99.7% on subtitles). Its lead
+  does not depend on the corpus.
+- **v1 drops from 3rd to 6th.** Written Italian has more L (7.09% vs 5.14%), I and D, and much less O
+  and H. Its same-finger bigrams rise from 2.3% to 3.1%, mostly `zi` (0.59%, from *-zione*) on the left
+  index, which also carries E and I.
+- **The variants swap places.** On Wikipedia, separating C and H (variant C) and the A+B+C combination
+  beat v1, while on subtitles they were worse. Single-letter swaps are within the noise of the corpus
+  choice: they are not a reason to pick a variant.
+- **Robustness:** the ranking is the same with the top 5,000 or the top 20,000 Wikipedia words, so the
+  difference comes from the kind of text, not from the list size.
+
+Conclusion for step 3: optimise on both corpora together, and treat v0.2-seed as the reference to beat.
