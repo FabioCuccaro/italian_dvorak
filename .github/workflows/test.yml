@@ -18,4 +18,7 @@ jobs:
       - name: Results are up to date
         run: |
           python -m kbeval
+          python -m kbeval --corpus data/it_wikipedia_top20000.csv --out results/wikipedia
+          python -m kbeval.compare subtitles=results wikipedia=results/wikipedia --out results
           git diff --exit-code results/
+          test -z "$(git status --porcelain results/)"

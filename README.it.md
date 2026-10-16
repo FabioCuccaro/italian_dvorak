@@ -28,7 +28,10 @@ per l'accento grave, Shift + tasto morto e poi vocale per l'accento acuto.
 | Mano sinistra / destra | 50,5 / 49,5 | 54,2 / 45,8 |
 
 Misurato sulle 5.000 parole italiane più frequenti (corpus di sottotitoli). Confronto completo con gli
-altri layout: [results/layout_comparison_report.it.md](results/layout_comparison_report.it.md).
+altri layout: [results/layout_comparison_report.it.md](results/layout_comparison_report.it.md). La
+stessa valutazione sull'italiano scritto (Wikipedia) è in
+[results/wikipedia/](results/wikipedia/layout_comparison_report.it.md), e
+[results/corpus_comparison.it.md](results/corpus_comparison.it.md) mette i due corpus a confronto.
 
 ### Provarlo
 
@@ -41,9 +44,17 @@ layout sarà definitivo.
 La pipeline di valutazione richiede solo Python 3.10+, senza pacchetti aggiuntivi.
 
 ```sh
-python -m kbeval                  # valuta tutti i layout in layouts/, scrive results/
+python -m kbeval                  # valuta tutti i layout in layouts/ sul corpus di sottotitoli, scrive results/
 python -m unittest discover tests # esegue i test
 python -m kbeval --help           # tutte le opzioni
+```
+
+Per rigenerare tutto `results/`, compresi Wikipedia e il confronto:
+
+```sh
+python -m kbeval
+python -m kbeval --corpus data/it_wikipedia_top20000.csv --out results/wikipedia
+python -m kbeval.compare subtitles=results wikipedia=results/wikipedia --out results
 ```
 
 Per valutare un tuo layout, aggiungi un file JSON in [`layouts/`](layouts/) (copia
@@ -61,6 +72,8 @@ Output in `results/`:
 | `worst_same_finger_bigrams.csv` | i bigrammi stesso dito più scomodi per layout |
 | `top_ngrams.csv` | caratteri, bigrammi e trigrammi più frequenti nel corpus |
 | `sensitivity.csv` | quanto è stabile la classifica al variare dei pesi |
+| `wikipedia/` | gli stessi file per il corpus di Wikipedia |
+| `corpus_comparison.it.md` (e `.md` in inglese) | classifiche e metriche principali dei due corpus affiancate |
 
 ### Cosa viene misurato
 
@@ -77,7 +90,7 @@ e i cambi di direzione, e le battute extra per le vocali accentate (tasto morto,
 | `kbeval/` | pipeline di valutazione (Python, solo libreria standard) |
 | `layouts/` | layout confrontati, un file JSON ciascuno |
 | `config/` | pesi del punteggio |
-| `data/` | corpus, con la sua [licenza](data/README.md) |
+| `data/` | corpus (sottotitoli, Wikipedia), con la loro [licenza](data/README.md) |
 | `docs/` | analisi e note di progetto |
 | `results/` | output generati |
 | `keybr/` | file del layout per keybr |
@@ -85,12 +98,12 @@ e i cambi di direzione, e le battute extra per le vocali accentate (tasto morto,
 
 ## Roadmap
 
-1. Pipeline di valutazione riproducibile e valutazione di v1 (questa versione).
-2. Secondo corpus di italiano scritto, per verificare i risultati oltre i sottotitoli.
+1. Pipeline di valutazione riproducibile e valutazione di v1. Fatto.
+2. Secondo corpus di italiano scritto (Wikipedia), per verificare i risultati oltre i sottotitoli. Fatto.
 3. Nuovo layout ottimizzato con il modello corretto.
 4. Layout installabili (prima XKB per Linux) e integrazione con keybr.
 
 ## Licenza
 
-Codice e documentazione: [MIT](LICENSE). Il corpus in `data/` è CC BY-SA 4.0, vedi
+Codice e documentazione: [MIT](LICENSE). I corpus in `data/` sono CC BY-SA 4.0, vedi
 [data/README.md](data/README.md).

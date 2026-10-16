@@ -100,5 +100,12 @@ class ReproduceStato(unittest.TestCase):
                                  "roll_inward": 17.5, "roll_outward": 21.5})
 
 
+class WikipediaCorpus(unittest.TestCase):
+    def test_every_character_is_typeable_on_v1(self):
+        corpus = load_corpus(ROOT / "data" / "it_wikipedia_top20000.csv")
+        self.assertEqual(len(corpus.words), 20_000)
+        self.assertEqual(summarize(analyze(load_layout(V1), corpus))["unmapped_characters"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()
