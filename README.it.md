@@ -38,9 +38,11 @@ stessa valutazione sull'italiano scritto (Wikipedia) è in
 
 ### Provarlo
 
-I file del layout per una copia self-hosted di [keybr](https://www.keybr.com) sono in
-[`keybr/`](keybr/README.md). Contengono ancora v1. Le versioni installabili per i sistemi operativi
-arriveranno quando il layout sarà definitivo.
+Su Linux (Hyprland, Sway, X11) copia [`dist/xkb/itdvorak`](dist/xkb/itdvorak) in
+`~/.config/xkb/symbols/` e seleziona il layout `itdvorak`. I file per esercitarsi su una copia
+self-hosted di [keybr](https://www.keybr.com) sono in [`dist/keybr/`](dist/keybr/). Mappa completa e
+istruzioni passo passo: [docs/install.it.md](docs/install.it.md). Windows e macOS non sono ancora
+disponibili.
 
 ## Valutare un layout
 
@@ -97,7 +99,8 @@ e i cambi di direzione, e le battute extra per le vocali accentate (tasto morto,
 | `data/` | corpus (sottotitoli, Wikipedia), con la loro [licenza](data/README.md) |
 | `docs/` | analisi e note di progetto |
 | `results/` | output generati |
-| `keybr/` | file del layout per keybr |
+| `keymaps/` | mappa completa di v2 (lettere, cifre, simboli, AltGr) |
+| `dist/` | file del layout generati: XKB per Linux, keybr |
 | `scripts/` | script di supporto (download del corpus) |
 
 ## Roadmap
@@ -105,7 +108,7 @@ e i cambi di direzione, e le battute extra per le vocali accentate (tasto morto,
 1. Pipeline di valutazione riproducibile e valutazione di v1. Fatto.
 2. Secondo corpus di italiano scritto (Wikipedia), per verificare i risultati oltre i sottotitoli. Fatto.
 3. Nuovo layout ottimizzato con il modello corretto: [v2](docs/v2-candidate.it.md), con la è dedicata.
-4. Layout installabili (prima XKB per Linux) e integrazione con keybr.
+4. Layout installabili: XKB per Linux e keybr fatti ([installazione](docs/install.it.md)); Windows e macOS da fare.
 
 ## Licenza
 
