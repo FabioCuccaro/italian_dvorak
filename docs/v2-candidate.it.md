@@ -1,26 +1,32 @@
-# Italian-Dvorak v2 (candidato)
+# Italian-Dvorak v2
 
 [English](v2-candidate.md)
 
-v2 è il primo layout prodotto dall'ottimizzatore di questa repo, con il verso dei roll corretto e
-valutato su entrambi i corpus insieme. È un **candidato**: accenti, punteggiatura e prove di digitazione
-reali sono ancora aperti.
+v2 è il primo layout prodotto dall'ottimizzatore di questa repo, con il verso dei roll corretto,
+valutato su entrambi i corpus insieme, e con un tasto dedicato per la è. Restano aperti la
+punteggiatura fuori dal blocco principale e le prove di digitazione reali.
 
 ```
-K F ' Q X   B D S M J
+K F ' Q È   B D S M J   X
 U E I A O   C T L N R   ◌
 W Z Y . ,   P G V H -
 ```
 
-◌ è il tasto morto per gli accenti (tasto Quote), come in v1: tasto morto e poi vocale per l'accento
-grave, Shift + tasto morto e poi vocale per l'accento acuto.
+- **è** ha un tasto suo; **Shift + è = é**, come sulla tastiera italiana (*perché*, *né*).
+- **à ì ò ù** e le maiuscole accentate usano il tasto morto ◌ (tasto Quote): tasto morto e poi vocale
+  per l'accento grave, Shift + tasto morto e poi vocale per l'acuto.
+- **X** va sul tasto a destra della riga alta (BracketLeft su una tastiera QWERTY); è lo 0,01% delle
+  lettere.
 
 ## Come è stato ottenuto
+
+L'ottimizzatore ha prodotto prima `v2-base` ([`20-v2-base.json`](../layouts/20-v2-base.json)), con le
+stesse lettere e il tasto morto per tutti gli accenti:
 
 ```sh
 python -m kbeval.optimize --corpus data/it_top5000.csv --corpus data/it_wikipedia_top20000.csv \
     --vowels-left --seeds 1 2 3 4 5 6 7 8 --steps 300000 \
-    --out layouts/20-v2.json --id v2 --name "Italian-Dvorak v2 (candidate)"
+    --out layouts/20-v2-base.json --id v2-base --name "Italian-Dvorak v2 base (optimiser output)"
 ```
 
 - **Obiettivo:** lo stesso punteggio pesato di `python -m kbeval` ([`config/weights.json`](../config/weights.json)),
@@ -32,10 +38,15 @@ python -m kbeval.optimize --corpus data/it_top5000.csv --corpus data/it_wikipedi
 - **Vocali a sinistra:** la ricerca è stata fatta con e senza questo vincolo. Entrambe trovano lo stesso
   layout: le vocali finiscono sulla home row sinistra senza essere forzate.
 - P e G (riga bassa, indice destro) si possono scambiare senza costo; tutte le metriche restano uguali.
+- **È dedicata** (scelta il 16/10/2026 tra tasto morto, AltGr, è dedicata o tutte le accentate su tasti
+  propri). La sola è vale il 45% delle vocali accentate. La è è stata provata su ogni tasto principale,
+  spostando la lettera sostituita sul tasto extra; il punteggio migliore è sulla riga alta sotto
+  l'indice sinistro (al posto della X). La è sul mignolo destro accanto al tasto morto peggiora
+  nettamente (0,222). Il risultato è `v2` ([`21-v2.json`](../layouts/21-v2.json)).
 
 ## Risultati
 
-| | v2 | v0.2-seed | v1 | QWERTY italiana |
+| | v2-base | v0.2-seed | v1 | QWERTY italiana |
 |---|---|---|---|---|
 | Punteggio, sottotitoli | **0,207** | 0,249 | 0,315 | 1,679 |
 | Punteggio, Wikipedia | **0,206** | 0,307 | 0,371 | 1,624 |
@@ -45,8 +56,18 @@ python -m kbeval.optimize --corpus data/it_top5000.csv --corpus data/it_wikipedi
 | Alternanza delle mani (sottotitoli) | 74,7% | 76,0% | 75,0% | 49,5% |
 | Mignoli (sottotitoli) | 10,1% | 8,3% | 10,5% | 16,3% |
 
-v2 è prima nel 98,2% (sottotitoli) e nel 100% (Wikipedia) dei campioni dell'analisi di sensibilità ai
-pesi. Tabelle complete: [results/corpus_comparison.it.md](../results/corpus_comparison.it.md).
+Con la è dedicata, v2 mantiene le stesse lettere e cambia solo il modo di digitare gli accenti:
+
+| | v2-base (solo tasto morto) | v2 (è dedicata) |
+|---|---|---|
+| Punteggio (sottotitoli / Wikipedia) | 0,207 / 0,206 | 0,209 / **0,204** |
+| Battute extra per accenti, ogni 100 caratteri | 0,73 / 0,77 | **0,37 / 0,47** |
+| Mignoli | 10,1 / 10,2% | **9,8 / 10,0%** |
+| Home row | 75,9 / 77,8% | 75,4 / 77,4% |
+
+v2 e v2-base occupano i primi due posti in quasi tutti i campioni dell'analisi di sensibilità ai pesi
+(v0.2-seed è prima solo nell'1,5% dei campioni sui sottotitoli e mai su Wikipedia). Tabelle complete:
+[results/corpus_comparison.it.md](../results/corpus_comparison.it.md).
 
 ## Quanto è reale
 
@@ -70,8 +91,9 @@ verifiche:
   comoda.
 - **Apostrofo sulla riga alta sinistra** (medio), accanto a F e Q. Nelle elisioni come *l'anno* o
   *dell'epoca* è di solito seguito da una vocale sulla stessa mano.
-- **Scorciatoie:** Z, X, C, V non sono più sulla riga bassa sinistra (la C è sulla home row destra).
+- **Scorciatoie:** Z, X, C, V non sono più sulla riga bassa sinistra (la C è sulla home row destra,
+  la X fuori dal blocco principale).
 - **Non modellati:** maiuscole, cifre, punteggiatura diversa da apostrofo, punto, virgola e trattino, e
   bigrammi a cavallo dello spazio.
-- **Accenti e punteggiatura** sono ancora da decidere (tasto morto, AltGr o è dedicata), prima di
-  preparare il layout per l'uso quotidiano.
+- **Punteggiatura e simboli** fuori dal blocco principale (riga dei numeri, parentesi, ; : ? !) seguono
+  ancora la tastiera italiana e verranno definiti quando il layout sarà impacchettato.

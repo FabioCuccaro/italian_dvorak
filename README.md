@@ -5,28 +5,29 @@
 A Dvorak-style keyboard layout designed for Italian, and an open, reproducible method to design and
 evaluate it.
 
-> **Status: candidate.** The current candidate (v2) is not final: accents and punctuation are still
-> open and it has not been tested by real typists. See [v2](docs/v2-candidate.md) and the
+> **Status: candidate.** v2 is not final yet: punctuation outside the main block is still open and it
+> has not been tested by real typists. See [v2](docs/v2-candidate.md) and the
 > [evaluation of the earlier v1](docs/v1-evaluation.md).
 
-## The layout (v2 candidate)
+## The layout (v2)
 
 ```
-K F ' Q X   B D S M J
+K F ' Q È   B D S M J   X
 U E I A O   C T L N R   ◌
 W Z Y . ,   P G V H -
 ```
 
-Vowels sit on the left home row, frequent consonants on the right. Accented vowels (à è é ì ò ù) are
-typed with a dead key (◌) on the key right of the home row: dead key then vowel for the grave accent,
-Shift + dead key then vowel for the acute accent.
+Vowels sit on the left home row, frequent consonants on the right. **è** has its own key and
+**Shift + è = é**. The other accented vowels (à ì ò ù) use a dead key (◌) on the key right of the home
+row: dead key then vowel for the grave accent, Shift + dead key then vowel for the acute accent.
 
 | | v2 | v1 | Italian QWERTY |
 |---|---|---|---|
-| Keystrokes on the home row | 75.9% | 75.2% | 29.8% |
+| Keystrokes on the home row | 75.4% | 75.2% | 29.8% |
 | Same-finger bigrams | 0.39% | 2.34% | 7.02% |
 | Hand alternation | 74.7% | 75.0% | 49.5% |
-| Left / right hand | 50.2 / 49.8 | 50.5 / 49.5 | 54.2 / 45.8 |
+| Left / right hand | 50.3 / 49.7 | 50.5 / 49.5 | 54.2 / 45.8 |
+| Extra keystrokes for accents, per 100 characters | 0.37 | 0.73 | 0.06 |
 
 Measured on the 5,000 most frequent Italian words (subtitles corpus). Full comparison with other
 layouts: [results/layout_comparison_report.md](results/layout_comparison_report.md). The same
@@ -57,7 +58,7 @@ python -m kbeval.compare subtitles=results wikipedia=results/wikipedia --out res
 ```
 
 To evaluate your own layout, add a JSON file to [`layouts/`](layouts/) (copy
-[`20-v2.json`](layouts/20-v2.json) and edit the rows) and rerun. To search for a new layout, use
+[`21-v2.json`](layouts/21-v2.json) and edit the rows) and rerun. To search for a new layout, use
 `python -m kbeval.optimize` (see [how v2 was made](docs/v2-candidate.md#how-it-was-made)). To use another corpus, pass any CSV
 with `word,frequency` columns via `--corpus`. Score weights are in
 [`config/weights.json`](config/weights.json).
@@ -100,7 +101,7 @@ lists the limits of the model.
 
 1. Reproducible evaluation pipeline and v1 assessment. Done.
 2. Second corpus of written Italian (Wikipedia), to check the results beyond subtitles. Done.
-3. New optimised layout with the corrected model: [v2 candidate](docs/v2-candidate.md).
+3. New optimised layout with the corrected model: [v2](docs/v2-candidate.md), with a dedicated è.
 4. Installable layouts (Linux XKB first) and keybr integration.
 
 ## License
