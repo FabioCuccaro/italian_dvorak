@@ -5,27 +5,28 @@
 A Dvorak-style keyboard layout designed for Italian, and an open, reproducible method to design and
 evaluate it.
 
-> **Status: prototype.** The current candidate (v1) is not final. See the
-> [evaluation of v1](docs/v1-evaluation.md) for what works and what does not.
+> **Status: candidate.** The current candidate (v2) is not final: accents and punctuation are still
+> open and it has not been tested by real typists. See [v2](docs/v2-candidate.md) and the
+> [evaluation of the earlier v1](docs/v1-evaluation.md).
 
-## The layout (v1 candidate)
+## The layout (v2 candidate)
 
 ```
-G W Q Z Y   M L C H B
-U A O E I   S N T R D
-' . X K J   F P V , -
+K F ' Q X   B D S M J
+U E I A O   C T L N R   ◌
+W Z Y . ,   P G V H -
 ```
 
 Vowels sit on the left home row, frequent consonants on the right. Accented vowels (à è é ì ò ù) are
-typed with a dead key on the key right of the home row: dead key then vowel for the grave accent,
+typed with a dead key (◌) on the key right of the home row: dead key then vowel for the grave accent,
 Shift + dead key then vowel for the acute accent.
 
-| | v1 | Italian QWERTY |
-|---|---|---|
-| Keystrokes on the home row | 75.2% | 29.8% |
-| Same-finger bigrams | 2.34% | 7.02% |
-| Hand alternation | 75.0% | 49.5% |
-| Left / right hand | 50.5 / 49.5 | 54.2 / 45.8 |
+| | v2 | v1 | Italian QWERTY |
+|---|---|---|---|
+| Keystrokes on the home row | 75.9% | 75.2% | 29.8% |
+| Same-finger bigrams | 0.39% | 2.34% | 7.02% |
+| Hand alternation | 74.7% | 75.0% | 49.5% |
+| Left / right hand | 50.2 / 49.8 | 50.5 / 49.5 | 54.2 / 45.8 |
 
 Measured on the 5,000 most frequent Italian words (subtitles corpus). Full comparison with other
 layouts: [results/layout_comparison_report.md](results/layout_comparison_report.md). The same
@@ -35,7 +36,7 @@ and [results/corpus_comparison.md](results/corpus_comparison.md) puts the two si
 ### Try it
 
 Layout files for a self-hosted [keybr](https://www.keybr.com) are in [`keybr/`](keybr/README.md).
-Installable versions for operating systems will come once the layout is final.
+They still contain v1. Installable versions for operating systems will come once the layout is final.
 
 ## Evaluate a layout
 
@@ -56,7 +57,8 @@ python -m kbeval.compare subtitles=results wikipedia=results/wikipedia --out res
 ```
 
 To evaluate your own layout, add a JSON file to [`layouts/`](layouts/) (copy
-[`10-v1.json`](layouts/10-v1.json) and edit the rows) and rerun. To use another corpus, pass any CSV
+[`20-v2.json`](layouts/20-v2.json) and edit the rows) and rerun. To search for a new layout, use
+`python -m kbeval.optimize` (see [how v2 was made](docs/v2-candidate.md#how-it-was-made)). To use another corpus, pass any CSV
 with `word,frequency` columns via `--corpus`. Score weights are in
 [`config/weights.json`](config/weights.json).
 
@@ -85,7 +87,7 @@ lists the limits of the model.
 
 | Path | Content |
 |---|---|
-| `kbeval/` | evaluation pipeline (Python, standard library only) |
+| `kbeval/` | evaluation pipeline and optimiser (Python, standard library only) |
 | `layouts/` | layouts being compared, one JSON file each |
 | `config/` | score weights |
 | `data/` | corpora (subtitles, Wikipedia), with their own [license](data/README.md) |
@@ -98,7 +100,7 @@ lists the limits of the model.
 
 1. Reproducible evaluation pipeline and v1 assessment. Done.
 2. Second corpus of written Italian (Wikipedia), to check the results beyond subtitles. Done.
-3. New optimised layout with the corrected model.
+3. New optimised layout with the corrected model: [v2 candidate](docs/v2-candidate.md).
 4. Installable layouts (Linux XKB first) and keybr integration.
 
 ## License

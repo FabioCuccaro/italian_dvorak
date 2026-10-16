@@ -93,7 +93,7 @@ moves by ±50%.
 
 ## H. Next step
 
-Generate a new layout with the corrected roll direction, scored on both corpora (step 3 of the plan).
+Generate a new layout with the corrected roll direction, scored on both corpora (step 3 of the plan). Done: see [v2](v2-candidate.md).
 
 ## Second corpus: Italian Wikipedia
 

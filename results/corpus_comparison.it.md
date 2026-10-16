@@ -10,17 +10,18 @@ Punteggio (più basso = migliore), posizione, e posizione media quando ogni peso
 
 | Layout | subtitles punteggio | subtitles pos. | subtitles pos. media | wikipedia punteggio | wikipedia pos. | wikipedia pos. media |
 |---|---|---|---|---|---|---|
-| itadvorak-v0.2-seed | 0.2489 | 1 | 1.00 | 0.3070 | 1 | 1.21 |
-| v1-d | 0.3094 | 2 | 2.16 | 0.3503 | 2 | 2.46 |
-| v1 | 0.3146 | 3 | 3.31 | 0.3706 | 6 | 6.37 |
-| v1-b | 0.3163 | 4 | 3.96 | 0.3588 | 4 | 4.18 |
-| v1-a | 0.3268 | 5 | 4.71 | 0.3788 | 7 | 6.74 |
-| itadvorak-v0.1 | 0.3484 | 6 | 5.92 | 0.3853 | 8 | 7.23 |
-| v1-c | 0.3678 | 7 | 7.03 | 0.3605 | 5 | 4.46 |
-| v1-abc | 0.3804 | 8 | 7.89 | 0.3534 | 3 | 3.35 |
-| dvorak-us | 0.5239 | 9 | 9.10 | 0.5946 | 9 | 9.03 |
-| itadvorak-v0.1b | 0.6305 | 10 | 9.90 | 0.7907 | 10 | 9.97 |
-| qwerty-it | 1.6790 | 11 | 11.00 | 1.6240 | 11 | 11.00 |
+| v2 | 0.2072 | 1 | 1.02 | 0.2063 | 1 | 1.00 |
+| itadvorak-v0.2-seed | 0.2489 | 2 | 1.99 | 0.3070 | 2 | 2.21 |
+| v1-d | 0.3094 | 3 | 3.16 | 0.3503 | 3 | 3.46 |
+| v1 | 0.3146 | 4 | 4.31 | 0.3706 | 7 | 7.37 |
+| v1-b | 0.3163 | 5 | 4.96 | 0.3588 | 5 | 5.18 |
+| v1-a | 0.3268 | 6 | 5.71 | 0.3788 | 8 | 7.74 |
+| itadvorak-v0.1 | 0.3484 | 7 | 6.92 | 0.3853 | 9 | 8.23 |
+| v1-c | 0.3678 | 8 | 8.03 | 0.3605 | 6 | 5.46 |
+| v1-abc | 0.3804 | 9 | 8.89 | 0.3534 | 4 | 4.35 |
+| dvorak-us | 0.5239 | 10 | 10.10 | 0.5946 | 10 | 10.03 |
+| itadvorak-v0.1b | 0.6305 | 11 | 10.90 | 0.7907 | 11 | 10.97 |
+| qwerty-it | 1.6790 | 12 | 12.00 | 1.6240 | 12 | 12.00 |
 
 ## Metriche principali
 
@@ -28,6 +29,7 @@ Percentuali delle battute, o dei bigrammi di tasti dentro le parole per SFB e ro
 
 | Layout | home row (subtitles) | home row (wikipedia) | SFB (subtitles) | SFB (wikipedia) | roll verso l'interno (subtitles) | roll verso l'interno (wikipedia) | roll verso l'esterno (subtitles) | roll verso l'esterno (wikipedia) | mignoli (subtitles) | mignoli (wikipedia) | mano sinistra (subtitles) | mano sinistra (wikipedia) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
+| v2 | 75.9 | 77.8 | 0.4 | 0.7 | 13.0 | 12.7 | 7.8 | 6.9 | 10.1 | 10.2 | 50.2 | 48.9 |
 | itadvorak-v0.2-seed | 74.3 | 74.7 | 1.7 | 2.0 | 13.6 | 12.2 | 4.5 | 4.7 | 8.3 | 7.5 | 50.3 | 48.3 |
 | v1-d | 75.1 | 75.5 | 2.4 | 3.1 | 5.6 | 5.2 | 12.8 | 12.2 | 9.9 | 10.4 | 50.8 | 49.9 |
 | v1 | 75.2 | 75.7 | 2.3 | 3.1 | 5.6 | 5.1 | 12.9 | 12.4 | 10.5 | 11.0 | 50.5 | 49.6 |

@@ -1,0 +1,15 @@
+{
+  "id": "v2",
+  "name": "Italian-Dvorak v2 (candidate)",
+  "description": "Optimised by kbeval.optimize on it_top5000.csv, it_wikipedia_top20000.csv with vowels on the left hand (best of seeds 1, 2, 3, 4, 5, 6, 7, 8: seed 5, 300,000 steps).",
+  "source": "kbeval.optimize",
+  "rows": {
+    "top": "kf'qxbdsmj",
+    "home": "ueiaoctlnr",
+    "bottom": "wzy.,pgvh-"
+  },
+  "accents": {
+    "method": "deadkey",
+    "key": "home:10"
+  }
+}
