@@ -1,0 +1,18 @@
+{
+  "id": "v2",
+  "name": "Italian-Dvorak v2",
+  "description": "The optimiser output (v2-base) with a dedicated è key on the left top row, where X was; X moves to the key right of the top row. é is Shift + è; other accented vowels use the dead key.",
+  "source": "20-v2-base.json, accent option chosen on 2026-10-16",
+  "rows": {
+    "top": "kf'qèbdsmj",
+    "home": "ueiaoctlnr",
+    "bottom": "wzy.,pgvh-"
+  },
+  "extra": {
+    "x": "top:10"
+  },
+  "accents": {
+    "method": "deadkey",
+    "key": "home:10"
+  }
+}

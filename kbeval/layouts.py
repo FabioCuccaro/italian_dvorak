@@ -19,8 +19,10 @@ nothing relevant on it. "extra" places characters on any other key.
   - "deadkey": a dead key ("key") then the base vowel. Grave accent unshifted,
     acute accent with Shift, as in the it_dvorak.json keybr file.
   - "altgr": AltGr + the base vowel; acute with AltGr + Shift.
-  - "direct": no extra mechanism. As on the Italian keyboard, an acute vowel
-    is Shift + the key of the grave vowel (é = Shift + è).
+  - "direct": no extra mechanism.
+
+With any method, an acute vowel whose grave form has its own key is typed as
+Shift + that key, as on the Italian keyboard (é = Shift + è).
 """
 
 from __future__ import annotations
@@ -84,14 +86,14 @@ class Layout:
             return None
         base_press = Press(self.keys[base], base)
         shift = [Press(None, SHIFT)] if accent == ACUTE else []
+        grave = unicodedata.normalize("NFC", base + GRAVE)
+        if accent == ACUTE and grave in self.keys:
+            # As on the Italian keyboard: é is Shift + the è key.
+            return [Press(None, SHIFT), Press(self.keys[grave], grave)]
         if self.accent_method == "deadkey":
             return shift + [Press(self.dead_key, DEAD), base_press]
         if self.accent_method == "altgr":
             return [Press(None, ALTGR)] + shift + [base_press]
-        if self.accent_method == "direct" and accent == ACUTE:
-            grave = unicodedata.normalize("NFC", base + GRAVE)
-            if grave in self.keys:
-                return [Press(None, SHIFT), Press(self.keys[grave], grave)]
         return None
 
     def letter_rows(self) -> list[str]:

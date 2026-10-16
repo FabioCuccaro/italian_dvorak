@@ -2,7 +2,7 @@
 
 Usage:
     python -m kbeval.optimize --corpus data/it_top5000.csv --corpus data/it_wikipedia_top20000.csv \\
-        --vowels-left --seeds 1 2 3 4 5 --out layouts/20-v2.json --id v2 --name "Italian-Dvorak v2"
+        --vowels-left --seeds 1 2 3 4 5 --out layouts/20-v2-base.json --id v2-base --name "Italian-Dvorak v2 base"
 
 The search places 26 letters, the apostrophe, full stop, comma and hyphen on
 the 30 main keys (3 rows x 10 columns). Accented vowels use a dead key on the
