@@ -36,8 +36,10 @@ and [results/corpus_comparison.md](results/corpus_comparison.md) puts the two si
 
 ### Try it
 
-Layout files for a self-hosted [keybr](https://www.keybr.com) are in [`keybr/`](keybr/README.md).
-They still contain v1. Installable versions for operating systems will come once the layout is final.
+On Linux (Hyprland, Sway, X11), copy [`dist/xkb/itdvorak`](dist/xkb/itdvorak) to
+`~/.config/xkb/symbols/` and select the `itdvorak` layout. Files for practising on a self-hosted
+[keybr](https://www.keybr.com) are in [`dist/keybr/`](dist/keybr/). Full keymap and step-by-step
+instructions: [docs/install.md](docs/install.md). Windows and macOS are not available yet.
 
 ## Evaluate a layout
 
@@ -94,7 +96,8 @@ lists the limits of the model.
 | `data/` | corpora (subtitles, Wikipedia), with their own [license](data/README.md) |
 | `docs/` | analysis and design notes |
 | `results/` | generated outputs |
-| `keybr/` | layout files for keybr |
+| `keymaps/` | full keymap of v2 (letters, digits, symbols, AltGr) |
+| `dist/` | generated layout files: XKB for Linux, keybr |
 | `scripts/` | helper scripts (corpus download) |
 
 ## Roadmap
@@ -102,7 +105,7 @@ lists the limits of the model.
 1. Reproducible evaluation pipeline and v1 assessment. Done.
 2. Second corpus of written Italian (Wikipedia), to check the results beyond subtitles. Done.
 3. New optimised layout with the corrected model: [v2](docs/v2-candidate.md), with a dedicated è.
-4. Installable layouts (Linux XKB first) and keybr integration.
+4. Installable layouts: Linux XKB and keybr done ([install](docs/install.md)); Windows and macOS to do.
 
 ## License
 
