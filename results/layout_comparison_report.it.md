@@ -116,10 +116,18 @@ u a o e i   s n t r l
 ' . x k j   f p v , -
 ```
 
-**Italian-Dvorak v2 (candidate)** (`v2`): Optimised by kbeval.optimize on it_top5000.csv, it_wikipedia_top20000.csv with vowels on the left hand (best of seeds 1, 2, 3, 4, 5, 6, 7, 8: seed 5, 300,000 steps).
+**Italian-Dvorak v2 base (optimiser output)** (`v2-base`): Optimised by kbeval.optimize on it_top5000.csv, it_wikipedia_top20000.csv with vowels on the left hand (best of seeds 1, 2, 3, 4, 5, 6, 7, 8: seed 5, 300,000 steps).
 
 ```
 k f ' q x   b d s m j
+u e i a o   c t l n r
+w z y . ,   p g v h -
+```
+
+**Italian-Dvorak v2** (`v2`): The optimiser output (v2-base) with a dedicated è key on the left top row, where X was; X moves to the key right of the top row. é is Shift + è; other accented vowels use the dead key.
+
+```
+k f ' q è   b d s m j
 u e i a o   c t l n r
 w z y . ,   p g v h -
 ```
@@ -130,18 +138,19 @@ Valori in percentuale delle battute (righe, mani, mignoli) o dei bigrammi di tas
 
 | Pos. | Layout | Punteggio | Home | Alta | Bassa | Distanza | SFB | Alternanza | Roll verso l'interno | Roll verso l'esterno | Mignoli | Mano sinistra | Costo accenti |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | v2 | 0.2072 | 75.9 | 15.6 | 8.6 | 0.426 | 0.39 | 74.7 | 13.0 | 7.8 | 10.1 | 50.2 | 0.73 |
-| 2 | itadvorak-v0.2-seed | 0.2489 | 74.3 | 19.9 | 5.8 | 0.475 | 1.68 | 76.0 | 13.6 | 4.5 | 8.3 | 50.3 | 0.73 |
-| 3 | v1-d | 0.3094 | 75.1 | 18.5 | 6.4 | 0.435 | 2.35 | 75.0 | 5.6 | 12.8 | 9.9 | 50.8 | 0.73 |
-| 4 | v1 | 0.3146 | 75.2 | 18.4 | 6.4 | 0.438 | 2.34 | 75.0 | 5.6 | 12.9 | 10.5 | 50.5 | 0.73 |
-| 5 | v1-b | 0.3163 | 75.2 | 18.4 | 6.4 | 0.438 | 2.46 | 74.8 | 6.3 | 12.2 | 10.3 | 50.8 | 0.73 |
-| 6 | v1-a | 0.3268 | 77.0 | 16.6 | 6.4 | 0.421 | 2.94 | 75.0 | 6.0 | 11.9 | 12.3 | 50.5 | 0.73 |
-| 7 | itadvorak-v0.1 | 0.3484 | 77.0 | 18.0 | 5.1 | 0.446 | 4.55 | 75.6 | 10.1 | 5.6 | 11.2 | 50.8 | 0.73 |
-| 8 | v1-c | 0.3678 | 75.2 | 18.4 | 6.4 | 0.438 | 3.52 | 74.9 | 5.4 | 12.0 | 10.5 | 51.8 | 0.73 |
-| 9 | v1-abc | 0.3804 | 77.0 | 16.6 | 6.4 | 0.421 | 4.20 | 74.7 | 6.7 | 10.2 | 12.0 | 52.1 | 0.73 |
-| 10 | dvorak-us | 0.5239 | 71.5 | 20.9 | 7.6 | 0.444 | 1.88 | 74.5 | 9.8 | 9.7 | 23.5 | 51.3 | 0.73 |
-| 11 | itadvorak-v0.1b | 0.6305 | 77.0 | 18.0 | 5.1 | 0.446 | 8.87 | 61.2 | 17.7 | 8.1 | 11.2 | 48.1 | 0.73 |
-| 12 | qwerty-it | 1.6790 | 29.8 | 51.3 | 18.3 | 0.803 | 7.02 | 49.5 | 17.3 | 22.0 | 16.3 | 54.2 | 0.06 |
+| 1 | v2-base | 0.2072 | 75.9 | 15.6 | 8.6 | 0.426 | 0.39 | 74.7 | 13.0 | 7.8 | 10.1 | 50.2 | 0.73 |
+| 2 | v2 | 0.2090 | 75.4 | 16.0 | 8.6 | 0.428 | 0.39 | 74.7 | 13.0 | 7.7 | 9.8 | 50.3 | 0.37 |
+| 3 | itadvorak-v0.2-seed | 0.2489 | 74.3 | 19.9 | 5.8 | 0.475 | 1.68 | 76.0 | 13.6 | 4.5 | 8.3 | 50.3 | 0.73 |
+| 4 | v1-d | 0.3094 | 75.1 | 18.5 | 6.4 | 0.435 | 2.35 | 75.0 | 5.6 | 12.8 | 9.9 | 50.8 | 0.73 |
+| 5 | v1 | 0.3146 | 75.2 | 18.4 | 6.4 | 0.438 | 2.34 | 75.0 | 5.6 | 12.9 | 10.5 | 50.5 | 0.73 |
+| 6 | v1-b | 0.3163 | 75.2 | 18.4 | 6.4 | 0.438 | 2.46 | 74.8 | 6.3 | 12.2 | 10.3 | 50.8 | 0.73 |
+| 7 | v1-a | 0.3268 | 77.0 | 16.6 | 6.4 | 0.421 | 2.94 | 75.0 | 6.0 | 11.9 | 12.3 | 50.5 | 0.73 |
+| 8 | itadvorak-v0.1 | 0.3484 | 77.0 | 18.0 | 5.1 | 0.446 | 4.55 | 75.6 | 10.1 | 5.6 | 11.2 | 50.8 | 0.73 |
+| 9 | v1-c | 0.3678 | 75.2 | 18.4 | 6.4 | 0.438 | 3.52 | 74.9 | 5.4 | 12.0 | 10.5 | 51.8 | 0.73 |
+| 10 | v1-abc | 0.3804 | 77.0 | 16.6 | 6.4 | 0.421 | 4.20 | 74.7 | 6.7 | 10.2 | 12.0 | 52.1 | 0.73 |
+| 11 | dvorak-us | 0.5239 | 71.5 | 20.9 | 7.6 | 0.444 | 1.88 | 74.5 | 9.8 | 9.7 | 23.5 | 51.3 | 0.73 |
+| 12 | itadvorak-v0.1b | 0.6305 | 77.0 | 18.0 | 5.1 | 0.446 | 8.87 | 61.2 | 17.7 | 8.1 | 11.2 | 48.1 | 0.73 |
+| 13 | qwerty-it | 1.6790 | 29.8 | 51.3 | 18.3 | 0.803 | 7.02 | 49.5 | 17.3 | 22.0 | 16.3 | 54.2 | 0.06 |
 
 ## Sensibilità ai pesi
 
@@ -149,18 +158,19 @@ Valori in percentuale delle battute (righe, mani, mignoli) o dei bigrammi di tas
 
 | Layout | Posizione media | Primo posto | Intervallo posizioni |
 |---|---|---|---|
-| v2 | 1.02 | 98.2% | 1–2 |
-| itadvorak-v0.2-seed | 1.99 | 1.8% | 1–4 |
-| v1-d | 3.16 | 0.0% | 3–7 |
-| v1 | 4.31 | 0.0% | 3–7 |
-| v1-b | 4.96 | 0.0% | 4–7 |
-| v1-a | 5.71 | 0.0% | 2–7 |
-| itadvorak-v0.1 | 6.92 | 0.0% | 3–9 |
-| v1-c | 8.03 | 0.0% | 7–9 |
-| v1-abc | 8.89 | 0.0% | 7–9 |
-| dvorak-us | 10.10 | 0.0% | 10–11 |
-| itadvorak-v0.1b | 10.90 | 0.0% | 10–11 |
-| qwerty-it | 12.00 | 0.0% | 12–12 |
+| v2-base | 1.22 | 79.9% | 1–3 |
+| v2 | 1.82 | 18.6% | 1–3 |
+| itadvorak-v0.2-seed | 2.97 | 1.5% | 1–5 |
+| v1-d | 4.16 | 0.0% | 4–8 |
+| v1 | 5.31 | 0.0% | 4–8 |
+| v1-b | 5.96 | 0.0% | 5–8 |
+| v1-a | 6.71 | 0.0% | 3–8 |
+| itadvorak-v0.1 | 7.92 | 0.0% | 4–10 |
+| v1-c | 9.03 | 0.0% | 8–10 |
+| v1-abc | 9.89 | 0.0% | 8–10 |
+| dvorak-us | 11.10 | 0.0% | 11–12 |
+| itadvorak-v0.1b | 11.90 | 0.0% | 11–12 |
+| qwerty-it | 13.00 | 0.0% | 13–13 |
 
 ## Carico per dito (% delle battute)
 
@@ -177,9 +187,10 @@ Valori in percentuale delle battute (righe, mani, mignoli) o dei bigrammi di tas
 | v1-c | 5.4 | 11.1 | 12.0 | 23.4 | 24.4 | 12.4 | 6.2 | 5.1 |
 | v1-d | 5.4 | 11.1 | 12.1 | 22.2 | 24.6 | 12.5 | 7.6 | 4.5 |
 | v1-abc | 5.4 | 11.1 | 12.3 | 23.4 | 22.7 | 12.4 | 6.2 | 6.6 |
-| v2 | 3.7 | 13.1 | 10.4 | 23.0 | 18.9 | 12.7 | 11.9 | 6.3 |
+| v2-base | 3.7 | 13.1 | 10.4 | 23.0 | 18.9 | 12.7 | 11.9 | 6.3 |
+| v2 | 3.7 | 12.8 | 10.4 | 23.4 | 19.0 | 12.7 | 12.0 | 6.0 |
 
-## Peggiori bigrammi stesso dito di Italian-Dvorak v2 (candidate)
+## Peggiori bigrammi stesso dito di Italian-Dvorak v2
 
 Ordinati per quota x (1 + distanza tra i tasti). ◌ = tasto morto.
 

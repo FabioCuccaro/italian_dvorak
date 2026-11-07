@@ -10,18 +10,19 @@ Punteggio (più basso = migliore), posizione, e posizione media quando ogni peso
 
 | Layout | subtitles punteggio | subtitles pos. | subtitles pos. media | wikipedia punteggio | wikipedia pos. | wikipedia pos. media |
 |---|---|---|---|---|---|---|
-| v2 | 0.2072 | 1 | 1.02 | 0.2063 | 1 | 1.00 |
-| itadvorak-v0.2-seed | 0.2489 | 2 | 1.99 | 0.3070 | 2 | 2.21 |
-| v1-d | 0.3094 | 3 | 3.16 | 0.3503 | 3 | 3.46 |
-| v1 | 0.3146 | 4 | 4.31 | 0.3706 | 7 | 7.37 |
-| v1-b | 0.3163 | 5 | 4.96 | 0.3588 | 5 | 5.18 |
-| v1-a | 0.3268 | 6 | 5.71 | 0.3788 | 8 | 7.74 |
-| itadvorak-v0.1 | 0.3484 | 7 | 6.92 | 0.3853 | 9 | 8.23 |
-| v1-c | 0.3678 | 8 | 8.03 | 0.3605 | 6 | 5.46 |
-| v1-abc | 0.3804 | 9 | 8.89 | 0.3534 | 4 | 4.35 |
-| dvorak-us | 0.5239 | 10 | 10.10 | 0.5946 | 10 | 10.03 |
-| itadvorak-v0.1b | 0.6305 | 11 | 10.90 | 0.7907 | 11 | 10.97 |
-| qwerty-it | 1.6790 | 12 | 12.00 | 1.6240 | 12 | 12.00 |
+| v2-base | 0.2072 | 1 | 1.22 | 0.2063 | 2 | 1.94 |
+| v2 | 0.2090 | 2 | 1.82 | 0.2041 | 1 | 1.06 |
+| itadvorak-v0.2-seed | 0.2489 | 3 | 2.97 | 0.3070 | 3 | 3.21 |
+| v1-d | 0.3094 | 4 | 4.16 | 0.3503 | 4 | 4.46 |
+| v1 | 0.3146 | 5 | 5.31 | 0.3706 | 8 | 8.37 |
+| v1-b | 0.3163 | 6 | 5.96 | 0.3588 | 6 | 6.18 |
+| v1-a | 0.3268 | 7 | 6.71 | 0.3788 | 9 | 8.74 |
+| itadvorak-v0.1 | 0.3484 | 8 | 7.92 | 0.3853 | 10 | 9.23 |
+| v1-c | 0.3678 | 9 | 9.03 | 0.3605 | 7 | 6.46 |
+| v1-abc | 0.3804 | 10 | 9.89 | 0.3534 | 5 | 5.35 |
+| dvorak-us | 0.5239 | 11 | 11.10 | 0.5946 | 11 | 11.03 |
+| itadvorak-v0.1b | 0.6305 | 12 | 11.90 | 0.7907 | 12 | 11.97 |
+| qwerty-it | 1.6790 | 13 | 13.00 | 1.6240 | 13 | 13.00 |
 
 ## Metriche principali
 
@@ -29,7 +30,8 @@ Percentuali delle battute, o dei bigrammi di tasti dentro le parole per SFB e ro
 
 | Layout | home row (subtitles) | home row (wikipedia) | SFB (subtitles) | SFB (wikipedia) | roll verso l'interno (subtitles) | roll verso l'interno (wikipedia) | roll verso l'esterno (subtitles) | roll verso l'esterno (wikipedia) | mignoli (subtitles) | mignoli (wikipedia) | mano sinistra (subtitles) | mano sinistra (wikipedia) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| v2 | 75.9 | 77.8 | 0.4 | 0.7 | 13.0 | 12.7 | 7.8 | 6.9 | 10.1 | 10.2 | 50.2 | 48.9 |
+| v2-base | 75.9 | 77.8 | 0.4 | 0.7 | 13.0 | 12.7 | 7.8 | 6.9 | 10.1 | 10.2 | 50.2 | 48.9 |
+| v2 | 75.4 | 77.4 | 0.4 | 0.7 | 13.0 | 12.7 | 7.7 | 6.9 | 9.8 | 10.0 | 50.3 | 49.0 |
 | itadvorak-v0.2-seed | 74.3 | 74.7 | 1.7 | 2.0 | 13.6 | 12.2 | 4.5 | 4.7 | 8.3 | 7.5 | 50.3 | 48.3 |
 | v1-d | 75.1 | 75.5 | 2.4 | 3.1 | 5.6 | 5.2 | 12.8 | 12.2 | 9.9 | 10.4 | 50.8 | 49.9 |
 | v1 | 75.2 | 75.7 | 2.3 | 3.1 | 5.6 | 5.1 | 12.9 | 12.4 | 10.5 | 11.0 | 50.5 | 49.6 |

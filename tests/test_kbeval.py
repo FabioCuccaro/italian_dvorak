@@ -120,7 +120,7 @@ class Optimizer(unittest.TestCase):
     def test_matches_pipeline_score(self):
         from kbeval.optimize import placement
         from kbeval.score import score
-        for name in ("10-v1.json", "20-v2.json"):
+        for name in ("10-v1.json", "20-v2-base.json"):
             layout = load_layout(ROOT / "layouts" / name)
             full = sum(score(summarize(analyze(layout, c)), self.weights) for c in self.corpora) / 2
             self.assertAlmostEqual(self.objective(placement(layout)), full, places=9, msg=name)
